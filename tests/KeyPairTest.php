@@ -20,7 +20,7 @@ class KeyPairTest extends TestCase
     public function it_can_write_keys_to_disk()
     {
         $privateKeyPath = __DIR__ . '/temp/privateKey';
-        $publicKeyPath =  __DIR__ . '/temp/publicKey';
+        $publicKeyPath = __DIR__ . '/temp/publicKey';
 
         if (file_exists($privateKeyPath)) {
             unlink($privateKeyPath);
