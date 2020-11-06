@@ -2,7 +2,9 @@
 
 namespace Spatie\Crypto;
 
+use OpenSSLAsymmetricKey;
 use Spatie\Crypto\Exceptions\CouldNotDecryptData;
+use Spatie\Crypto\Exceptions\InvalidPrivateKey;
 
 class PrivateKey
 {
@@ -23,6 +25,10 @@ class PrivateKey
     public function __construct(string $privateKeyString)
     {
         $this->privateKeyString = $privateKeyString;
+
+        if (! $this->isValidKey()) {
+            throw InvalidPrivateKey::make();
+        }
     }
 
     public function encrypt(string $data): string
@@ -53,5 +59,19 @@ class PrivateKey
         }
 
         return $decrypted;
+    }
+
+    public function isValidKey(): bool
+    {
+        $key = openssl_pkey_get_private($this->privateKeyString);
+
+        return $key instanceof OpenSSLAsymmetricKey;
+    }
+
+    public function details(): array
+    {
+        $key = openssl_pkey_get_private($this->privateKeyString);
+
+        return openssl_pkey_get_details($key);
     }
 }

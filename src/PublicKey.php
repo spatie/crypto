@@ -2,7 +2,9 @@
 
 namespace Spatie\Crypto;
 
+use OpenSSLAsymmetricKey;
 use Spatie\Crypto\Exceptions\CouldNotDecryptData;
+use Spatie\Crypto\Exceptions\InvalidPublicKey;
 
 class PublicKey
 {
@@ -23,16 +25,15 @@ class PublicKey
     public function __construct(string $publicKeyString)
     {
         $this->publicKeyString = $publicKeyString;
+
+        if (! $this->isValidKey()) {
+            throw InvalidPublicKey::make();
+        }
     }
 
     public function encrypt(string $data)
     {
-        try {
             openssl_public_encrypt($data, $encrypted, $this->publicKeyString);
-
-        } catch (\Exception $exception) {
-            \dd($exception);
-        }
 
         return $encrypted;
     }
@@ -57,5 +58,19 @@ class PublicKey
         }
 
         return $decrypted;
+    }
+
+    public function isValidKey(): bool
+    {
+        $key = openssl_pkey_get_public($this->publicKeyString);
+
+        return $key instanceof OpenSSLAsymmetricKey;
+    }
+
+    public function details(): array
+    {
+        $key = openssl_pkey_get_public($this->publicKeyString);
+
+        return openssl_pkey_get_details($key);
     }
 }

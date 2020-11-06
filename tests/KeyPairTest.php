@@ -2,7 +2,6 @@
 
 namespace Spatie\Crypto\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Spatie\Crypto\KeyPair;
 
 class KeyPairTest extends TestCase

@@ -4,10 +4,10 @@ namespace Spatie\Crypto\Exceptions;
 
 use Exception;
 
-class CouldNotDecryptData extends Exception
+class InvalidPublicKey extends Exception
 {
     public static function make(): self
     {
-        return new self("Could not decrypt the data.");
+        return new self('This does not seem to be a valid public key.');
     }
 }
