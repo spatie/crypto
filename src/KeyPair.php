@@ -4,15 +4,23 @@ namespace Spatie\Crypto;
 
 class KeyPair
 {
+    protected string $digestAlgorithm;
+    protected int $privateKeyBits;
+    protected int $privateKeyType;
+
     public function __construct(
-        protected string $digestAlgorithm = 'sha512',
-        protected int $privateKeyBits = 4096,
-        protected int $privateKeyType = OPENSSL_KEYTYPE_RSA,
-    ) {}
+        string $digestAlgorithm = 'sha512',
+        int $privateKeyBits = 4096,
+        int $privateKeyType = OPENSSL_KEYTYPE_RSA
+    ) {
+        $this->privateKeyType = $privateKeyType;
+        $this->privateKeyBits = $privateKeyBits;
+        $this->digestAlgorithm = $digestAlgorithm;
+    }
 
     public function generate(
         string $privateKeyPath = '',
-        string $publicKeyPath = '',
+        string $publicKeyPath = ''
     ): array
     {
         /** @var \OpenSSLAsymmetricKey $key */

@@ -2,7 +2,6 @@
 
 namespace Spatie\Crypto;
 
-use OpenSSLAsymmetricKey;
 use Spatie\Crypto\Exceptions\CouldNotDecryptData;
 use Spatie\Crypto\Exceptions\FileDoesNotExist;
 use Spatie\Crypto\Exceptions\InvalidPublicKey;
@@ -47,7 +46,7 @@ class PublicKey
     {
         try {
             $this->decrypt($data);
-        } catch (CouldNotDecryptData) {
+        } catch (CouldNotDecryptData $exception) {
             return false;
         }
 
@@ -69,7 +68,7 @@ class PublicKey
     {
         $key = openssl_pkey_get_public($this->publicKeyString);
 
-        return $key instanceof OpenSSLAsymmetricKey;
+        return (bool)$key;
     }
 
     public function details(): array
