@@ -43,7 +43,7 @@ class PublicKey
         return $encrypted;
     }
 
-    public function isValidData(string $data): bool
+    public function canDecrypt(string $data): bool
     {
         try {
             $this->decrypt($data);

@@ -19,7 +19,7 @@ class PublicKeyTest extends TestCase
         $publicKey = PublicKey::fromFile($this->getStub('publicKey'));
 
         $modifiedDecrypted = $encryptedData . 'modified';
-        $this->assertFalse($publicKey->isValidData($modifiedDecrypted));
+        $this->assertFalse($publicKey->canDecrypt($modifiedDecrypted));
 
         $this->expectException(CouldNotDecryptData::class);
         $publicKey->decrypt($modifiedDecrypted);

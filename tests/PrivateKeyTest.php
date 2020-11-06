@@ -18,7 +18,7 @@ class PrivateKeyTest extends TestCase
         $privateKey = PrivateKey::fromFile($this->getStub('privateKey'));
 
         $modifiedDecrypted = $encryptedData . 'modified';
-        $this->assertFalse($privateKey->isValidData($modifiedDecrypted));
+        $this->assertFalse($privateKey->canDecrypt($modifiedDecrypted));
 
         $this->expectException(CouldNotDecryptData::class);
         $privateKey->decrypt($modifiedDecrypted);
