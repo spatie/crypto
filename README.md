@@ -16,7 +16,7 @@ use Spatie\Crypto\PublicKey;
 [$privateKey, $publicKey] = (new KeyPair())->generate();
 
 // when passing paths, the generate keys will to those paths
-(new KeyPair())->generate($pathToPrivateKey, $pathToPublicKey)
+(new KeyPair())->generate($pathToPrivateKey, $pathToPublicKey);
 
 $data = 'my secret data';
 
