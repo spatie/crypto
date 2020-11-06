@@ -3,6 +3,7 @@
 namespace Spatie\Crypto\Tests;
 
 use Spatie\Crypto\Exceptions\CouldNotDecryptData;
+use Spatie\Crypto\Exceptions\FileDoesNotExist;
 use Spatie\Crypto\Exceptions\InvalidPublicKey;
 use Spatie\Crypto\PrivateKey;
 use Spatie\Crypto\PublicKey;
@@ -40,5 +41,13 @@ class PublicKeyTest extends TestCase
         $this->expectException(InvalidPublicKey::class);
 
         PublicKey::fromString('invalid-key');
+    }
+
+    /** @test */
+    public function it_will_throw_an_exception_when_there_is_no_public_key_file_at_the_path_given()
+    {
+        $this->expectException(FileDoesNotExist::class);
+
+        PublicKey::fromFile('non-existing-file');
     }
 }

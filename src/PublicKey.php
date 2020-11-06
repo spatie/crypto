@@ -4,6 +4,7 @@ namespace Spatie\Crypto;
 
 use OpenSSLAsymmetricKey;
 use Spatie\Crypto\Exceptions\CouldNotDecryptData;
+use Spatie\Crypto\Exceptions\FileDoesNotExist;
 use Spatie\Crypto\Exceptions\InvalidPublicKey;
 
 class PublicKey
@@ -17,6 +18,10 @@ class PublicKey
 
     public static function fromFile(string $pathToPublicKey): self
     {
+        if (! file_exists($pathToPublicKey)) {
+            throw FileDoesNotExist::make($pathToPublicKey);
+        }
+
         $publicKeyString = file_get_contents($pathToPublicKey);
 
         return new static($publicKeyString);
