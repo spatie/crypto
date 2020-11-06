@@ -23,6 +23,13 @@ class PublicKey
         $this->publicKeyString = $publicKeyString;
     }
 
+    public function encrypt(string $data)
+    {
+        openssl_public_encrypt($data, $encrypted, $this->publicKeyString);
+
+        return $encrypted;
+    }
+
     public function decrypt(string $data): string
     {
         openssl_public_decrypt($data, $decrypted, $this->publicKeyString);

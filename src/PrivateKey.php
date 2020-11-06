@@ -29,4 +29,11 @@ class PrivateKey
 
         return $decrypted;
     }
+
+    public function decrypt(string $data): string
+    {
+        openssl_private_decrypt($data, $decrypted, $this->privateKeyString);
+
+        return $decrypted;
+    }
 }
