@@ -1,21 +1,22 @@
-# Encrypt and decrypt messages
+# Encrypt and decrypt data using private/public keys
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/crypto.svg?style=flat-square)](https://packagist.org/packages/spatie/crypto)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/crypto/run-tests?label=tests)](https://github.com/spatie/crypto/actions?query=workflow%3Arun-tests+branch%3Amaster)
+![Tests](https://github.com/spatie/crypto/workflows/Tests/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/crypto.svg?style=flat-square)](https://packagist.org/packages/spatie/crypto)
 
-This package allows you to easily generate a private/public key pair, and encrypt/decrypt messages using those keys. 
+
+This package allows you to easily generate a private/public key pairs, and encrypt/decrypt messages using those keys.
 
 ```php
 use Spatie\Crypto\KeyPair;
 use Spatie\Crypto\PrivateKey;
 use Spatie\Crypto\PublicKey;
 
-// generating a key pair;
+// generating a key pair
 [$privateKey, $publicKey] = (new KeyPair())->generate();
 
-// when passing paths, the generate keys will to those paths
-(new KeyPair())->generate($pathToPrivateKey, $pathToPublicKey)
+// when passing paths, the generate keys will be written those paths
+(new KeyPair())->generate($pathToPrivateKey, $pathToPublicKey);
 
 $data = 'my secret data';
 
