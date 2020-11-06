@@ -1,7 +1,7 @@
 # Encrypt and decrypt data using private/public keys
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/crypto.svg?style=flat-square)](https://packagist.org/packages/spatie/crypto)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/crypto/run-tests?label=tests)](https://github.com/spatie/crypto/actions?query=workflow%3Arun-tests+branch%3Amaster)
+![Tests](https://github.com/spatie/crypto/workflows/Tests/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/crypto.svg?style=flat-square)](https://packagist.org/packages/spatie/crypto)
 
 
