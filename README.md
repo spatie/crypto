@@ -12,7 +12,6 @@ use Spatie\Crypto\KeyPair;
 use Spatie\Crypto\PrivateKey;
 use Spatie\Crypto\PublicKey;
 
-
 // generating a key pair;
 [$privateKey, $publicKey] = (new KeyPair())->generate();
 
@@ -21,9 +20,11 @@ use Spatie\Crypto\PublicKey;
 
 $data = 'my secret data';
 
-$encryptedData = PrivateKey::fromFile($pathToPrivateKey)->encrypt($data);
+$privateKey = PrivateKey::fromFile($pathToPrivateKey);
+$encryptedData = $privateKey->encrypt($data); // returns something unreadable
 
-$decryptedData = PublicKey::fromFile($pathToPublicKey)->decrypt($encryptedData)
+$publicKey = PublicKey::fromFile($pathToPublicKey);
+$decryptedData = $publicKey->decrypt($encryptedData); // returns 'my secret data'
 ```
 
 Most functions in this package are wrappers around `open_ssl_*` functions to improve DX.
