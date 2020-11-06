@@ -5,7 +5,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/crypto.svg?style=flat-square)](https://packagist.org/packages/spatie/crypto)
 
 
-This package allows you to easily generate a private/public key pair, and encrypt/decrypt messages using those keys. 
+This package allows you to easily generate a private/public key pairs, and encrypt/decrypt messages using those keys. 
 
 ```php
 use Spatie\Crypto\KeyPair;
