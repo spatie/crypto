@@ -4,7 +4,6 @@ namespace Spatie\Crypto\Tests;
 
 use Spatie\Crypto\Exceptions\CouldNotDecryptData;
 use Spatie\Crypto\Exceptions\InvalidPrivateKey;
-use Spatie\Crypto\Exceptions\InvalidPublicKey;
 use Spatie\Crypto\PrivateKey;
 use Spatie\Crypto\PublicKey;
 
