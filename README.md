@@ -66,14 +66,14 @@ To load a key from a file use the `fromFile` static method.
 
 ```php
 Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey);
-Spatie\Crypto\PrivateKey::fromFile($pathToPublicKey);
+Spatie\Crypto\PublicKey::fromFile($pathToPublicKey);
 ```
 
 Alternatively, you can also create a key object using a string.
 
 ```php
 Spatie\Crypto\PrivateKey::fromString($privateKeyString);
-Spatie\Crypto\PrivateKey::fromString($publicKeyString);
+Spatie\Crypto\PublicKey::fromString($publicKeyString);
 ```
 
 ### Encrypting a message with a private key, decrypting with the public key
@@ -113,7 +113,7 @@ If `decrypt` cannot decrypt the given data (maybe a non-matching public key was 
 Both the `PublicKey` and `PrivateKey` class have a `canDecrypt` method to determine if given data can be decrypted.
 
 ```php
-Spatie\Crypto\PrivateKey::fromFile($pathToPublicKey)->canDecrypt($data) // returns a boolean;
+Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->canDecrypt($data) // returns a boolean;
 Spatie\Crypto\PublicKey::fromFile($pathToPublicKey)->canDecrypt($data) // returns a boolean;
 ```
 
