@@ -2,6 +2,8 @@
 
 namespace Spatie\Crypto;
 
+use Spatie\Crypto\Exceptions\CouldNotDecryptData;
+
 class PrivateKey
 {
     protected string $privateKeyString;
@@ -30,9 +32,25 @@ class PrivateKey
         return $decrypted;
     }
 
+    public function isValidData(string $data): bool
+    {
+        try {
+            $this->decrypt($data);
+        }
+        catch (CouldNotDecryptData) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function decrypt(string $data): string
     {
         openssl_private_decrypt($data, $decrypted, $this->privateKeyString);
+
+        if (is_null($decrypted)) {
+            throw CouldNotDecryptData::make();
+        }
 
         return $decrypted;
     }
