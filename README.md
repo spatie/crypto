@@ -4,7 +4,6 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/crypto/run-tests?label=tests)](https://github.com/spatie/crypto/actions?query=workflow%3Arun-tests+branch%3Amaster)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/crypto.svg?style=flat-square)](https://packagist.org/packages/spatie/crypto)
 
-
 This package allows you to easily generate a private/public key pair, and encrypt/decrypt messages using those keys. 
 
 ```php
