@@ -77,4 +77,9 @@ class PublicKey
 
         return openssl_pkey_get_details($key);
     }
+
+    public function verify(string $data, string $signature): bool
+    {
+        return openssl_verify($data, $signature, $this->publicKeyString);
+    }
 }

@@ -77,4 +77,11 @@ class PrivateKey
 
         return openssl_pkey_get_details($key);
     }
+
+    public function sign(string $data): string
+    {
+        openssl_sign($data, $signature, $this->privateKeyString);
+
+        return $signature;
+    }
 }
