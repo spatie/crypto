@@ -82,6 +82,6 @@ class PrivateKey
     {
         openssl_sign($data, $signature, $this->privateKeyString);
 
-        return $signature;
+        return base64_encode($signature);
     }
 }

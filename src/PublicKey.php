@@ -80,6 +80,6 @@ class PublicKey
 
     public function verify(string $data, string $signature): bool
     {
-        return openssl_verify($data, $signature, $this->publicKeyString);
+        return openssl_verify($data, base64_decode($signature), $this->publicKeyString);
     }
 }

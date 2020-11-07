@@ -117,6 +117,19 @@ Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->canDecrypt($data) // retu
 Spatie\Crypto\PublicKey::fromFile($pathToPublicKey)->canDecrypt($data) // returns a boolean;
 ```
 
+### Sign and verify data
+
+The `PrivateKey` class has a method `sign` to generate a signature for the given data. The `verify` method on the `PublicKey` class can be used to verify if a signature is valid for the given data.
+
+```php
+$signature = Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->sign('my message') // returns a boolean;
+
+$publicKey = Spatie\Crypto\PublicKey::fromFile($pathToPublicKey);
+
+$publicKey->verify('my message', $signature) // returns true;
+$publicKey->verify('my modified message', $signature) // returns false;
+```
+
 ## Testing
 
 ``` bash
