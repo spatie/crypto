@@ -21,8 +21,7 @@ class KeyPair
     public function generate(
         string $privateKeyPath = '',
         string $publicKeyPath = ''
-    ): array
-    {
+    ): array {
         /** @var \OpenSSLAsymmetricKey $key */
         $asymmetricKey = openssl_pkey_new([
             "digest_alg" => $this->digestAlgorithm,

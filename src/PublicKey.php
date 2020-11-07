@@ -37,7 +37,7 @@ class PublicKey
 
     public function encrypt(string $data)
     {
-            openssl_public_encrypt($data, $encrypted, $this->publicKeyString);
+        openssl_public_encrypt($data, $encrypted, $this->publicKeyString);
 
         return $encrypted;
     }

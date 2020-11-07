@@ -46,8 +46,7 @@ class PrivateKey
     {
         try {
             $this->decrypt($data);
-        }
-        catch (CouldNotDecryptData $exception) {
+        } catch (CouldNotDecryptData $exception) {
             return false;
         }
 
