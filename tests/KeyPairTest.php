@@ -46,14 +46,14 @@ class KeyPairTest extends TestCase
     {
         $password = 'my-password';
 
-        [$generatedprivateKey] = (new KeyPair())
+        [$generatedPrivateKey] = (new KeyPair())
             ->password('my-password')
             ->generate();
 
-        $privateKey = PrivateKey::fromString($generatedprivateKey, $password);
+        $privateKey = PrivateKey::fromString($generatedPrivateKey, $password);
         $this->assertInstanceOf(PrivateKey::class, $privateKey);
 
         $this->expectException(InvalidPrivateKey::class);
-        PrivateKey::fromString($generatedprivateKey, 'invalid-password');
+        PrivateKey::fromString($generatedPrivateKey, 'invalid-password');
     }
 }
