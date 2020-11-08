@@ -12,7 +12,7 @@ use Spatie\Crypto\KeyPair;
 use Spatie\Crypto\PrivateKey;
 use Spatie\Crypto\PublicKey;
 
-// generating a key pair
+// generating an RSA key pair
 [$privateKey, $publicKey] = (new KeyPair())->generate();
 
 // when passing paths, the generate keys will be written those paths
@@ -131,6 +131,18 @@ $publicKey = Spatie\Crypto\PublicKey::fromFile($pathToPublicKey);
 $publicKey->verify('my message', $signature) // returns true;
 $publicKey->verify('my modified message', $signature) // returns false;
 ```
+
+## Alternatives
+
+- [Libsodium](https://jolicode.com/blog/what-libsodium-can-do-for-you-an-introduction-to-cryptography-in-php)
+- [vlucas/pikirasa](https://github.com/vlucas/pikirasa)
+- [laminas/crypt](https://docs.laminas.dev/laminas-crypt/)
+
+## A word on the usage of RSA
+
+At the time of writing, RSA is secure enough for the use case we've built this package for.
+
+To know more about why RSA might not be good enought for you, read [this post on public-key encryption at Paragon.com](https://paragonie.com/blog/2016/12/everything-you-know-about-public-key-encryption-in-php-is-wrong#php-openssl-rsa-bad-default)
 
 ## Testing
 
