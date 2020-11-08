@@ -13,7 +13,7 @@ class PublicKeyTest extends TestCase
     /** @test */
     public function the_public_key_class_can_detect_invalid_data()
     {
-        $originalData = 'secret date';
+        $originalData = 'secret data';
         $privateKey = PrivateKey::fromFile($this->getStub('privateKey'));
         $encryptedData = $privateKey->encrypt($originalData);
         $publicKey = PublicKey::fromFile($this->getStub('publicKey'));
