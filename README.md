@@ -136,10 +136,10 @@ $publicKey->verify('my modified message', $signature) // returns false;
 
 This package aims to be very lightweight and easy to use. If you need more features, consider using of one these alternatives:
 
-- [Libsodium](https://jolicode.com/blog/what-libsodium-can-do-for-you-an-introduction-to-cryptography-in-php)
 - [phpseclib/phpseclib](https://github.com/phpseclib/phpseclib)
 - [vlucas/pikirasa](https://github.com/vlucas/pikirasa)
 - [laminas/crypt](https://docs.laminas.dev/laminas-crypt/)
+- [libsodium](https://jolicode.com/blog/what-libsodium-can-do-for-you-an-introduction-to-cryptography-in-php)
 
 ## A word on the usage of RSA
 
