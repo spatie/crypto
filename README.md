@@ -164,7 +164,7 @@ This package aims to be very lightweight and easy to use. If you need more featu
 
 At the time of writing, RSA is secure enough for the use case we've built this package for.
 
-To know more about why RSA might not be good enough for you, read [this post on public-key encryption at Paragon.com](https://paragonie.com/blog/2016/12/everything-you-know-about-public-key-encryption-in-php-is-wrong#php-openssl-rsa-bad-default)
+To know more about why RSA might not be good enough for you, read [this post on public-key encryption at Paragonie.com](https://paragonie.com/blog/2016/12/everything-you-know-about-public-key-encryption-in-php-is-wrong#php-openssl-rsa-bad-default)
 
 ## Testing
 
