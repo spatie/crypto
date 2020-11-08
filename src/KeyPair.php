@@ -8,6 +8,8 @@ class KeyPair
     protected int $privateKeyBits;
     protected int $privateKeyType;
 
+    private ?string $password = null;
+
     public function __construct(
         string $digestAlgorithm = 'sha512',
         int $privateKeyBits = 4096,
@@ -16,6 +18,13 @@ class KeyPair
         $this->privateKeyType = $privateKeyType;
         $this->privateKeyBits = $privateKeyBits;
         $this->digestAlgorithm = $digestAlgorithm;
+    }
+
+    public function password(string $password = null): self
+    {
+        $this->password = $password;
+
+        return $this;
     }
 
     public function generate(
@@ -29,7 +38,11 @@ class KeyPair
             "private_key_type" => $this->privateKeyType,
         ]);
 
-        openssl_pkey_export($asymmetricKey, $privateKey);
+        openssl_pkey_export(
+            $asymmetricKey,
+            $privateKey,
+            $this->password,
+        );
 
         $rawPublicKey = openssl_pkey_get_details($asymmetricKey);
 
