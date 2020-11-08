@@ -136,7 +136,7 @@ Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->canDecrypt($data) // retu
 Spatie\Crypto\PublicKey::fromFile($pathToPublicKey)->canDecrypt($data) // returns a boolean;
 ```
 
-### Sign and verify data
+### Signing and verifying data
 
 The `PrivateKey` class has a method `sign` to generate a signature for the given data. The `verify` method on the `PublicKey` class can be used to verify if a signature is valid for the given data.
 
