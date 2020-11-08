@@ -60,6 +60,15 @@ You can write the keys to disk, by passing paths to the `generate` function.
 (new Spatie\Crypto\KeyPair())->generate($pathToPrivateKey, $pathToPublicKey)
 ```
 
+You can password protect the private key by using the `password` method:
+
+```php
+[$passwordProtectedPrivateKey, $publicKey] = (new Spatie\Crypto\KeyPair())->password('my-password')->generate();
+```
+
+When using a password while generating a private key, you will need that password when instanciating the `PrivateKey` class.
+
+
 ### Loading keys
 
 To load a key from a file use the `fromFile` static method.
@@ -75,6 +84,15 @@ Alternatively, you can also create a key object using a string.
 Spatie\Crypto\PrivateKey::fromString($privateKeyString);
 Spatie\Crypto\PublicKey::fromString($publicKeyString);
 ```
+
+When the private key is password protected, you need to pass the password as the second argument.
+
+```php
+Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey, $password);
+Spatie\Crypto\PrivateKey::fromString($privateKeyString, $password);
+```
+
+If you do not specify the right password, a `Spatie\Crypto\Exceptions\InvalidPrivateKey` exception will be thrown.
 
 ### Encrypting a message with a private key, decrypting with the public key
 
