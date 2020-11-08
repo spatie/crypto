@@ -27,7 +27,7 @@ $publicKey = PublicKey::fromFile($pathToPublicKey);
 $decryptedData = $publicKey->decrypt($encryptedData); // returns 'my secret data'
 ```
 
-Most functions in this package are wrappers around `open_ssl_*` functions to improve DX.
+Most functions in this package are wrappers around `openssl_*` functions to improve DX.
 
 ## Support us
 
@@ -132,11 +132,11 @@ If `decrypt` cannot decrypt the given data (maybe a non-matching public key was 
 Both the `PublicKey` and `PrivateKey` class have a `canDecrypt` method to determine if given data can be decrypted.
 
 ```php
-Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->canDecrypt($data) // returns a boolean;
-Spatie\Crypto\PublicKey::fromFile($pathToPublicKey)->canDecrypt($data) // returns a boolean;
+Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->canDecrypt($data); // returns a boolean;
+Spatie\Crypto\PublicKey::fromFile($pathToPublicKey)->canDecrypt($data); // returns a boolean;
 ```
 
-### Signing and verify data
+### Signing and verifying data
 
 The `PrivateKey` class has a method `sign` to generate a signature for the given data. The `verify` method on the `PublicKey` class can be used to verify if a signature is valid for the given data.
 
@@ -164,7 +164,7 @@ This package aims to be very lightweight and easy to use. If you need more featu
 
 At the time of writing, RSA is secure enough for the use case we've built this package for.
 
-To know more about why RSA might not be good enough for you, read [this post on public-key encryption at Paragon.com](https://paragonie.com/blog/2016/12/everything-you-know-about-public-key-encryption-in-php-is-wrong#php-openssl-rsa-bad-default)
+To know more about why RSA might not be good enough for you, read [this post on public-key encryption at Paragonie.com](https://paragonie.com/blog/2016/12/everything-you-know-about-public-key-encryption-in-php-is-wrong#php-openssl-rsa-bad-default)
 
 ## Testing
 
