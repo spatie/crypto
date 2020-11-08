@@ -37,7 +37,7 @@ class PublicKey
 
     public function encrypt(string $data)
     {
-        openssl_public_encrypt($data, $encrypted, $this->publicKeyString);
+        openssl_public_encrypt($data, $encrypted, $this->publicKeyString, OPENSSL_PKCS1_OAEP_PADDING);
 
         return $encrypted;
     }
@@ -55,7 +55,7 @@ class PublicKey
 
     public function decrypt(string $data): string
     {
-        openssl_public_decrypt($data, $decrypted, $this->publicKeyString);
+        openssl_public_decrypt($data, $decrypted, $this->publicKeyString, OPENSSL_PKCS1_PADDING);
 
         if (is_null($decrypted)) {
             throw CouldNotDecryptData::make();
