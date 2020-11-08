@@ -132,8 +132,8 @@ If `decrypt` cannot decrypt the given data (maybe a non-matching public key was 
 Both the `PublicKey` and `PrivateKey` class have a `canDecrypt` method to determine if given data can be decrypted.
 
 ```php
-Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->canDecrypt($data) // returns a boolean;
-Spatie\Crypto\PublicKey::fromFile($pathToPublicKey)->canDecrypt($data) // returns a boolean;
+Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->canDecrypt($data); // returns a boolean;
+Spatie\Crypto\PublicKey::fromFile($pathToPublicKey)->canDecrypt($data); // returns a boolean;
 ```
 
 ### Signing and verifying data
