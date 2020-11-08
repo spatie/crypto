@@ -124,7 +124,7 @@ The `PrivateKey` class has a method `sign` to generate a signature for the given
 If `verify` returns `true`, you know for certain that the holder of the private key signed the message, and that it was not tampered with.
 
 ```php
-$signature = Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->sign('my message') // returns a boolean;
+$signature = Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->sign('my message'); // returns a string
 
 $publicKey = Spatie\Crypto\PublicKey::fromFile($pathToPublicKey);
 
