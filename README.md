@@ -134,7 +134,10 @@ $publicKey->verify('my modified message', $signature) // returns false;
 
 ## Alternatives
 
+This package aims to be very lightweight and easy to use. If you need more features, consider using of one these alternatives:
+
 - [Libsodium](https://jolicode.com/blog/what-libsodium-can-do-for-you-an-introduction-to-cryptography-in-php)
+- [phpseclib/phpseclib](https://github.com/phpseclib/phpseclib)
 - [vlucas/pikirasa](https://github.com/vlucas/pikirasa)
 - [laminas/crypt](https://docs.laminas.dev/laminas-crypt/)
 
@@ -142,7 +145,7 @@ $publicKey->verify('my modified message', $signature) // returns false;
 
 At the time of writing, RSA is secure enough for the use case we've built this package for.
 
-To know more about why RSA might not be good enought for you, read [this post on public-key encryption at Paragon.com](https://paragonie.com/blog/2016/12/everything-you-know-about-public-key-encryption-in-php-is-wrong#php-openssl-rsa-bad-default)
+To know more about why RSA might not be good enough for you, read [this post on public-key encryption at Paragon.com](https://paragonie.com/blog/2016/12/everything-you-know-about-public-key-encryption-in-php-is-wrong#php-openssl-rsa-bad-default)
 
 ## Testing
 
