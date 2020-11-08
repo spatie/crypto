@@ -50,20 +50,22 @@ composer require spatie/crypto
 You can generate a key pair using the `generate` function on the `KeyPair` class.
 
 ```php
-[$privateKey, $publicKey] = (new Spatie\Crypto\KeyPair())->generate();
+use Spatie\Crypto\KeyPair;
+
+[$privateKey, $publicKey] = (new KeyPair())->generate();
 ```
 
 You can write the keys to disk, by passing paths to the `generate` function. 
 
 ```php
 // when passing paths, the generate keys will to those paths
-(new Spatie\Crypto\KeyPair())->generate($pathToPrivateKey, $pathToPublicKey)
+(new KeyPair())->generate($pathToPrivateKey, $pathToPublicKey)
 ```
 
 You can protect the private key with a password by using the `password` method:
 
 ```php
-[$passwordProtectedPrivateKey, $publicKey] = (new Spatie\Crypto\KeyPair())->password('my-password')->generate();
+[$passwordProtectedPrivateKey, $publicKey] = (new KeyPair())->password('my-password')->generate();
 ```
 
 When using a password to generating a private key, you will need that password when instantiating the `PrivateKey` class.
