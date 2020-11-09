@@ -1,9 +1,10 @@
 <?php
 
-namespace Spatie\Crypto\Tests;
+namespace Spatie\Crypto\Tests\Rsa;
 
-use Spatie\Crypto\PrivateKey;
-use Spatie\Crypto\PublicKey;
+use Spatie\Crypto\Rsa\PrivateKey;
+use Spatie\Crypto\Rsa\PublicKey;
+use Spatie\Crypto\Tests\TestCase;
 
 class KeyTest extends TestCase
 {

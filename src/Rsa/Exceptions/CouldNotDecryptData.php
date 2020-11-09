@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Crypto\Exceptions;
+namespace Spatie\Crypto\Rsa\Exceptions;
 
 use Exception;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Crypto;
+namespace Spatie\Crypto\Rsa;
 
 class KeyPair
 {

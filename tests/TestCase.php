@@ -10,4 +10,9 @@ abstract class TestCase extends PHPUnitTestCase
     {
         return __DIR__ . "/stubs/{$nameOfStub}";
     }
+
+    public function getTempPath(string $fileName): string
+    {
+        return __DIR__ . "/temp/{$fileName}";
+    }
 }

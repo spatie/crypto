@@ -8,9 +8,9 @@
 This package allows you to easily generate a private/public key pairs, and encrypt/decrypt messages using those keys.
 
 ```php
-use Spatie\Crypto\KeyPair;
-use Spatie\Crypto\PrivateKey;
-use Spatie\Crypto\PublicKey;
+use Spatie\Crypto\Rsa\KeyPair;
+use Spatie\Crypto\Rsa\PrivateKey;
+use Spatie\Crypto\Rsa\PublicKey;
 
 // generating an RSA key pair
 [$privateKey, $publicKey] = (new KeyPair())->generate();
@@ -50,7 +50,7 @@ composer require spatie/crypto
 You can generate a key pair using the `generate` function on the `KeyPair` class.
 
 ```php
-use Spatie\Crypto\KeyPair;
+use Spatie\Crypto\Rsa\KeyPair;
 
 [$privateKey, $publicKey] = (new KeyPair())->generate();
 ```
@@ -75,22 +75,22 @@ When using a password to generating a private key, you will need that password w
 To load a key from a file use the `fromFile` static method.
 
 ```php
-Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey);
-Spatie\Crypto\PublicKey::fromFile($pathToPublicKey);
+Spatie\Crypto\Rsa\PrivateKey::fromFile($pathToPrivateKey);
+Spatie\Crypto\Rsa\PublicKey::fromFile($pathToPublicKey);
 ```
 
 Alternatively, you can also create a key object using a string.
 
 ```php
-Spatie\Crypto\PrivateKey::fromString($privateKeyString);
-Spatie\Crypto\PublicKey::fromString($publicKeyString);
+Spatie\Crypto\Rsa\PrivateKey::fromString($privateKeyString);
+Spatie\Crypto\Rsa\PublicKey::fromString($publicKeyString);
 ```
 
 If the private key is password protected, you need to pass the password as the second argument.
 
 ```php
-Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey, $password);
-Spatie\Crypto\PrivateKey::fromString($privateKeyString, $password);
+Spatie\Crypto\Rsa\PrivateKey::fromFile($pathToPrivateKey, $password);
+Spatie\Crypto\Rsa\PrivateKey::fromString($privateKeyString, $password);
 ```
 
 If you do not specify the right password, a `Spatie\Crypto\Exceptions\InvalidPrivateKey` exception will be thrown.
@@ -102,10 +102,10 @@ Here's how you can encrypt data using the private key, and how to decrypt it usi
 ```php
 $data = 'my secret data';
 
-$privateKey = Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey);
+$privateKey = Spatie\Crypto\Rsa\PrivateKey::fromFile($pathToPrivateKey);
 $encryptedData = $privateKey->encrypt($data); // encrypted data contains something unreadable
 
-$publicKey = Spatie\Crypto\PublicKey::fromFile($pathToPublicKey);
+$publicKey = Spatie\Crypto\Rsa\PublicKey::fromFile($pathToPublicKey);
 $decryptedData = $publicKey->decrypt($encryptedData); // decrypted data contains 'my secret data'
 ```
 
@@ -118,10 +118,10 @@ Here's how you can encrypt data using the public key, and how to decrypt it usin
 ```php
 $data = 'my secret data';
 
-$publicKey = Spatie\Crypto\PublicKey::fromFile($pathToPublicKey);
+$publicKey = Spatie\Crypto\Rsa\PublicKey::fromFile($pathToPublicKey);
 $encryptedData = $publicKey->encrypt($data); // encrypted data contains something unreadable
 
-$privateKey = Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey);
+$privateKey = Spatie\Crypto\Rsa\PrivateKey::fromFile($pathToPrivateKey);
 $decryptedData = $privateKey->decrypt($encryptedData); // decrypted data contains 'my secret data'
 ```
 
@@ -132,8 +132,8 @@ If `decrypt` cannot decrypt the given data (maybe a non-matching public key was 
 Both the `PublicKey` and `PrivateKey` class have a `canDecrypt` method to determine if given data can be decrypted.
 
 ```php
-Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->canDecrypt($data); // returns a boolean;
-Spatie\Crypto\PublicKey::fromFile($pathToPublicKey)->canDecrypt($data); // returns a boolean;
+Spatie\Crypto\Rsa\PrivateKey::fromFile($pathToPrivateKey)->canDecrypt($data); // returns a boolean;
+Spatie\Crypto\Rsa\PublicKey::fromFile($pathToPublicKey)->canDecrypt($data); // returns a boolean;
 ```
 
 ### Signing and verifying data
@@ -143,9 +143,9 @@ The `PrivateKey` class has a method `sign` to generate a signature for the given
 If `verify` returns `true`, you know for certain that the holder of the private key signed the message, and that it was not tampered with.
 
 ```php
-$signature = Spatie\Crypto\PrivateKey::fromFile($pathToPrivateKey)->sign('my message'); // returns a string
+$signature = Spatie\Crypto\Rsa\PrivateKey::fromFile($pathToPrivateKey)->sign('my message'); // returns a string
 
-$publicKey = Spatie\Crypto\PublicKey::fromFile($pathToPublicKey);
+$publicKey = Spatie\Crypto\Rsa\PublicKey::fromFile($pathToPublicKey);
 
 $publicKey->verify('my message', $signature) // returns true;
 $publicKey->verify('my modified message', $signature) // returns false;

@@ -1,10 +1,11 @@
 <?php
 
-namespace Spatie\Crypto\Tests;
+namespace Spatie\Crypto\Tests\Rsa;
 
-use Spatie\Crypto\Exceptions\InvalidPrivateKey;
-use Spatie\Crypto\KeyPair;
-use Spatie\Crypto\PrivateKey;
+use Spatie\Crypto\Rsa\Exceptions\InvalidPrivateKey;
+use Spatie\Crypto\Rsa\KeyPair;
+use Spatie\Crypto\Rsa\PrivateKey;
+use Spatie\Crypto\Tests\TestCase;
 
 class KeyPairTest extends TestCase
 {
@@ -20,8 +21,8 @@ class KeyPairTest extends TestCase
     /** @test */
     public function it_can_write_keys_to_disk()
     {
-        $privateKeyPath = __DIR__ . '/temp/privateKey';
-        $publicKeyPath = __DIR__ . '/temp/publicKey';
+        $privateKeyPath = $this->getTempPath('privateKey');
+        $publicKeyPath = $this->getTempPath('publicKey');
 
         if (file_exists($privateKeyPath)) {
             unlink($privateKeyPath);

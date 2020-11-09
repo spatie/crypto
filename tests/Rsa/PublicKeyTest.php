@@ -1,12 +1,13 @@
 <?php
 
-namespace Spatie\Crypto\Tests;
+namespace Spatie\Crypto\Tests\Rsa;
 
-use Spatie\Crypto\Exceptions\CouldNotDecryptData;
-use Spatie\Crypto\Exceptions\FileDoesNotExist;
-use Spatie\Crypto\Exceptions\InvalidPublicKey;
-use Spatie\Crypto\PrivateKey;
-use Spatie\Crypto\PublicKey;
+use Spatie\Crypto\Rsa\Exceptions\CouldNotDecryptData;
+use Spatie\Crypto\Rsa\Exceptions\FileDoesNotExist;
+use Spatie\Crypto\Rsa\Exceptions\InvalidPublicKey;
+use Spatie\Crypto\Rsa\PrivateKey;
+use Spatie\Crypto\Rsa\PublicKey;
+use Spatie\Crypto\Tests\TestCase;
 
 class PublicKeyTest extends TestCase
 {

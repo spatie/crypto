@@ -1,10 +1,10 @@
 <?php
 
-namespace Spatie\Crypto;
+namespace Spatie\Crypto\Rsa;
 
-use Spatie\Crypto\Exceptions\CouldNotDecryptData;
-use Spatie\Crypto\Exceptions\FileDoesNotExist;
-use Spatie\Crypto\Exceptions\InvalidPrivateKey;
+use Spatie\Crypto\Rsa\Exceptions\CouldNotDecryptData;
+use Spatie\Crypto\Rsa\Exceptions\FileDoesNotExist;
+use Spatie\Crypto\Rsa\Exceptions\InvalidPrivateKey;
 
 class PrivateKey
 {
