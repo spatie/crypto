@@ -1,4 +1,4 @@
-# Encrypt and sign data using private/public keys
+# Encrypting and signing data using private/public keys
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/crypto.svg?style=flat-square)](https://packagist.org/packages/spatie/crypto)
 ![Tests](https://github.com/spatie/crypto/workflows/Tests/badge.svg)
@@ -15,7 +15,7 @@ use Spatie\Crypto\Rsa\PublicKey;
 // generating an RSA key pair
 [$privateKey, $publicKey] = (new KeyPair())->generate();
 
-// when passing paths, the generate keys will be written those paths
+// when passing paths, the generated keys will be written those paths
 (new KeyPair())->generate($pathToPrivateKey, $pathToPublicKey);
 
 $data = 'my secret data';
