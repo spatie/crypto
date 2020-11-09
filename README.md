@@ -1,4 +1,4 @@
-# Encrypt and decrypt data using private/public keys
+# Encrypt and sign data using private/public keys
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/crypto.svg?style=flat-square)](https://packagist.org/packages/spatie/crypto)
 ![Tests](https://github.com/spatie/crypto/workflows/Tests/badge.svg)
