@@ -1,6 +1,6 @@
 {
     "name": "spatie/crypto",
-    "description": "Encrypt and decrypt messages",
+    "description": "Encrypting and signing data using private/public keys",
     "keywords": [
         "spatie",
         "crypto"
