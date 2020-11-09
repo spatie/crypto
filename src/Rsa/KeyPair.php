@@ -11,7 +11,7 @@ class KeyPair
     private ?string $password = null;
 
     public function __construct(
-        string $digestAlgorithm = 'sha512',
+        string $digestAlgorithm = OPENSSL_ALGO_SHA512,
         int $privateKeyBits = 4096,
         int $privateKeyType = OPENSSL_KEYTYPE_RSA
     ) {
