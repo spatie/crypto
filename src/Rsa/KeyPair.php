@@ -31,7 +31,7 @@ class KeyPair
         string $privateKeyPath = '',
         string $publicKeyPath = ''
     ): array {
-        /** @var \OpenSSLAsymmetricKey $key */
+        /** @var \OpenSSLAsymmetricKey $asymmetricKey */
         $asymmetricKey = openssl_pkey_new([
             "digest_alg" => $this->digestAlgorithm,
             "private_key_bits" => $this->privateKeyBits,
