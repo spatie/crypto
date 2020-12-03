@@ -72,6 +72,6 @@ class PublicKey
 
     public function verify(string $data, string $signature): bool
     {
-        return openssl_verify($data, base64_decode($signature), $this->publicKey);
+        return openssl_verify($data, base64_decode($signature), $this->publicKey, OPENSSL_ALGO_SHA256);
     }
 }

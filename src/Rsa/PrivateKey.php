@@ -72,7 +72,7 @@ class PrivateKey
 
     public function sign(string $data): string
     {
-        openssl_sign($data, $signature, $this->privateKey);
+        openssl_sign($data, $signature, $this->privateKey, OPENSSL_ALGO_SHA256);
 
         return base64_encode($signature);
     }
