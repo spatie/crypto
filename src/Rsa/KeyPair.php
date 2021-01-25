@@ -4,14 +4,14 @@ namespace Spatie\Crypto\Rsa;
 
 class KeyPair
 {
-    protected string $digestAlgorithm;
-    protected int $privateKeyBits;
-    protected int $privateKeyType;
+    protected $digestAlgorithm;
+    protected $privateKeyBits;
+    protected $privateKeyType;
 
-    private ?string $password = null;
+    private $password = null;
 
     public function __construct(
-        string $digestAlgorithm = OPENSSL_ALGO_SHA512,
+        $digestAlgorithm = OPENSSL_ALGO_SHA512,
         int $privateKeyBits = 4096,
         int $privateKeyType = OPENSSL_KEYTYPE_RSA
     ) {
@@ -41,7 +41,7 @@ class KeyPair
         openssl_pkey_export(
             $asymmetricKey,
             $privateKey,
-            $this->password,
+            $this->password
         );
 
         $rawPublicKey = openssl_pkey_get_details($asymmetricKey);
