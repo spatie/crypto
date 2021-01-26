@@ -12,7 +12,7 @@ class KeyTest extends TestCase
 
     protected PublicKey $publicKey;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->privateKey = PrivateKey::fromFile($this->getStub('privateKey'));
 
