@@ -3,6 +3,7 @@
 namespace Spatie\Crypto\Tests\Rsa;
 
 use Spatie\Crypto\Rsa\Exceptions\CouldNotDecryptData;
+use Spatie\Crypto\Rsa\Exceptions\FileDoesNotExist;
 use Spatie\Crypto\Rsa\Exceptions\InvalidPrivateKey;
 use Spatie\Crypto\Rsa\PrivateKey;
 use Spatie\Crypto\Rsa\PublicKey;
@@ -41,5 +42,24 @@ class PrivateKeyTest extends TestCase
         $this->expectException(InvalidPrivateKey::class);
 
         PrivateKey::fromString('invalid-key');
+    }
+
+    /** @test */
+    public function it_will_throw_an_exception_when_there_is_no_private_key_file_at_the_path_given()
+    {
+        $this->expectException(FileDoesNotExist::class);
+
+        PrivateKey::fromFile('non-existing-file');
+    }
+
+    /** @test */
+    public function the_private_key_class_can_decrypt()
+    {
+        $originalData = 'secret data';
+        $publicKey = PublicKey::fromFile($this->getStub('publicKey'));
+        $encryptedData = $publicKey->encrypt($originalData);
+        $privateKey = PrivateKey::fromFile($this->getStub('privateKey'));
+
+        $this->assertTrue($privateKey->canDecrypt($encryptedData));
     }
 }
