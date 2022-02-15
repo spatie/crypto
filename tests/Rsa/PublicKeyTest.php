@@ -51,4 +51,15 @@ class PublicKeyTest extends TestCase
 
         PublicKey::fromFile('non-existing-file');
     }
+
+    /** @test */
+    public function the_public_key_class_can_decrypt()
+    {
+        $originalData = 'secret data';
+        $privateKey = PrivateKey::fromFile($this->getStub('privateKey'));
+        $encryptedData = $privateKey->encrypt($originalData);
+        $publicKey = PublicKey::fromFile($this->getStub('publicKey'));
+        
+        $this->assertTrue($publicKey->canDecrypt($encryptedData));
+    }
 }
