@@ -29,7 +29,14 @@ class PrivateKey
 
     public function __construct(string $privateKeyString, string $password = null)
     {
-        $this->privateKey = openssl_pkey_get_private($privateKeyString, $password);
+        /**
+         * When you try to get a private key that has a password and you supply a null
+         * value password then it is possible that a prompt of "Enter PEM pass phrase:" occurs.
+         * The solution is to not supply any password variable.
+         */
+        $this->privateKey = $password ?
+            openssl_pkey_get_private($privateKeyString, $password) :
+            openssl_pkey_get_private($privateKeyString);
 
         if ($this->privateKey === false) {
             throw InvalidPrivateKey::make();
