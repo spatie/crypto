@@ -59,7 +59,7 @@ class PublicKeyTest extends TestCase
         $privateKey = PrivateKey::fromFile($this->getStub('privateKey'));
         $encryptedData = $privateKey->encrypt($originalData);
         $publicKey = PublicKey::fromFile($this->getStub('publicKey'));
-        
+
         $this->assertTrue($publicKey->canDecrypt($encryptedData));
     }
 }
