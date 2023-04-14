@@ -20,11 +20,11 @@ use Spatie\Crypto\Rsa\PublicKey;
 
 $data = 'my secret data';
 
-$privateKey = PrivateKey::fromFile($pathToPrivateKey);
-$encryptedData = $privateKey->encrypt($data); // returns something unreadable
-
 $publicKey = PublicKey::fromFile($pathToPublicKey);
-$decryptedData = $publicKey->decrypt($encryptedData); // returns 'my secret data'
+$encryptedData = $publicKey->encrypt($data); // returns something unreadable 
+
+$privateKey = PrivateKey::fromFile($pathToPrivateKey);
+$decryptedData = $privateKey->decrypt($encryptedData); // returns 'my secret data'
 ```
 
 Most functions in this package are wrappers around `openssl_*` functions to improve DX.
