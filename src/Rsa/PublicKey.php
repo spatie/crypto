@@ -36,9 +36,9 @@ class PublicKey
         }
     }
 
-    public function encrypt(string $data)
+    public function encrypt(string $data, int $padding = OPENSSL_PKCS1_OAEP_PADDING)
     {
-        openssl_public_encrypt($data, $encrypted, $this->publicKey, OPENSSL_PKCS1_OAEP_PADDING);
+        openssl_public_encrypt($data, $encrypted, $this->publicKey, $padding);
 
         return $encrypted;
     }
@@ -54,9 +54,9 @@ class PublicKey
         return true;
     }
 
-    public function decrypt(string $data): string
+    public function decrypt(string $data, int $padding = OPENSSL_PKCS1_PADDING): string
     {
-        openssl_public_decrypt($data, $decrypted, $this->publicKey, OPENSSL_PKCS1_PADDING);
+        openssl_public_decrypt($data, $decrypted, $this->publicKey, $padding);
 
         if (is_null($decrypted)) {
             throw CouldNotDecryptData::make();
@@ -70,8 +70,8 @@ class PublicKey
         return openssl_pkey_get_details($this->publicKey);
     }
 
-    public function verify(string $data, string $signature): bool
+    public function verify(string $data, string $signature, int $algorithm = OPENSSL_ALGO_SHA256): bool
     {
-        return openssl_verify($data, base64_decode($signature), $this->publicKey, OPENSSL_ALGO_SHA256);
+        return openssl_verify($data, base64_decode($signature), $this->publicKey, $algorithm);
     }
 }
