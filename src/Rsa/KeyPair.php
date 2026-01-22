@@ -20,7 +20,7 @@ class KeyPair
         $this->digestAlgorithm = (string)$digestAlgorithm;
     }
 
-    public function password(string $password = null): self
+    public function password(?string $password = null): self
     {
         $this->password = $password;
 

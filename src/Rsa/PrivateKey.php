@@ -11,12 +11,12 @@ class PrivateKey
     /** @var resource */
     protected $privateKey;
 
-    public static function fromString(string $privateKeyString, string $password = null): self
+    public static function fromString(string $privateKeyString, ?string $password = null): self
     {
         return new static($privateKeyString, $password);
     }
 
-    public static function fromFile(string $pathToPrivateKey, string $password = null): self
+    public static function fromFile(string $pathToPrivateKey, ?string $password = null): self
     {
         if (! file_exists($pathToPrivateKey)) {
             throw FileDoesNotExist::make($pathToPrivateKey);
@@ -27,7 +27,7 @@ class PrivateKey
         return new static($privateKeyString, $password);
     }
 
-    public function __construct(string $privateKeyString, string $password = null)
+    public function __construct(string $privateKeyString, ?string $password = null)
     {
         /**
          * When you try to get a private key that has a password and you supply a null
